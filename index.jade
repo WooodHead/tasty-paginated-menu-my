@@ -13,13 +13,14 @@ html(ng-app='myApp')
     script(src='dirPagination.js')
 
   body
-    ul
-      li(dir-paginate='word  in words | itemsPerpage:10')
-        p {{word.word}}
     h1 {{100+9}}
 
     div(ng-controller='MyController')
+      input.form-control(type='number',ng-model='pageSize')
+      input.form-control(type='text', ng-model='q')
+
       ul
-        li(dir-paginate='meal in meals | itemsPerPage: pageSize', current-page='currentPage')
+        li(dir-paginate='meal in meals | filter:q |itemsPerPage: pageSize', current-page='currentPage')
           p {{meal}}
-      dir-pagination-controls
+      //dir-pagination-controls(on-page-change='pageChangeHandler', template-url='dirPagination.tpl.html')
+      dir-pagination-controls(on-page-change='pageChangeHandler')
