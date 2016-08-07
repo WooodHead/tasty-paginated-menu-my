@@ -1,0 +1,25 @@
+doctype html
+
+html(ng-app='myApp')
+
+  head
+    link(rel='stylesheet',href='./bower_components/bootstrap/dist/css/bootstrap.min.css')
+    script(src='./bower_components/angular/angular.min.js')
+    script(src='./bower_components/jquery/dist/jquery.min.js')
+    script(src='./bower_components/bootstrap/dist/js/bootstrap.min.js')
+
+    link(href='style.css', rel='stylesheet')
+    script(src='script.js')
+    script(src='dirPagination.js')
+
+  body
+    ul
+      li(dir-paginate='word  in words | itemsPerpage:10')
+        p {{word.word}}
+    h1 {{100+9}}
+
+    div(ng-controller='MyController')
+      ul
+        li(dir-paginate='meal in meals | itemsPerPage: pageSize', current-page='currentPage')
+          p {{meal}}
+      dir-pagination-controls
